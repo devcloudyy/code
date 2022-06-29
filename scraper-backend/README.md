@@ -42,64 +42,143 @@ Finally run `npm run dev` to run the service and listen to port `5001`.
 
 --
 
-## System configuration
-
-Install Visual Studio Code
--> add Extension Typescript
 
 
-Install NodeJS - [Link](https://nodejs.org/)
--> node --version
 
-Install and run the HTTP Server package - [Link](https://www.npmjs.com/package/http-server)
--> npm install --global http-server
+<br />
+
+## System configuration - Installation
+
+<br />
+
+### `Visual Studio Code` 
+  - add Extension Typescript
+
+<br />
+
+### `NodeJS` - [Link](https://nodejs.org/) and 
+* add [Package HTTP Server](https://www.npmjs.com/package/http-server)
+
+```bash
+# Check installation
+node --version
+
+# Add HTTP Server package
+npm install --global http-server
+
+# Run HTTP Server
+cd <%PROJECTPATH%>
+http-server .
+```
+
+<br />
+
+### `Yarn` - [Link](https://classic.yarnpkg.com/lang/en/docs/install/)
+
+```bash
+# Global installation
+npm install --global yarn
+
+# Check installation
+yarn --version
+```
+
+<br />
+
+### `Nodemon and ts-node` - [Link](https://blog.logrocket.com/configuring-nodemon-with-typescript/)
+
+```bash
+# Global installation
+yarn global add nodemon ts-node
+# yarn global add nodemon --prefix /usr/local
+
+# Local installation
+yarn add --dev nodemon ts-node
+
+# Check installation
+which nodemon
+
+# Add to PATH
+export PATH="$(yarn global bin):$PATH"
+```
+
+<br />
+
+### `pino-pretty` - [Link](https://npm.io/package/pino-pretty)
+
+```bash
+# Global installation
+npm install -g pino-pretty
+
+# Local installation
+yarn add --dev pino-pretty
+
+```
+
+<br />
+
+### `Jest` - [Link](https://jestjs.io/docs/getting-started)
+* and Package [ts-jest](https://www.npmjs.com/package/ts-jest)
+
+```bash
+# Global installation
+npm install -g jest
+
+# Local installation
+npm install --save-dev jest
+# yarn add --dev jest
 
 
-Install Yarn - [Link](https://classic.yarnpkg.com/lang/en/docs/install/)
--> npm install --global yarn
--> yarn --version
+## for TypeScript see also:
+npm i ts-jest
+```
+
+<br />
 
 
-Install Nodemon and ts-node - [Link](https://blog.logrocket.com/configuring-nodemon-with-typescript/)
--> yarn add --dev nodemon ts-node
--> yarn global add nodemon --prefix /usr/local
--> which nodemon
--> export PATH="$(yarn global bin):$PATH"
 
 
-Install pino-pretty - [Link](https://npm.io/package/pino-pretty)
--> npm install -g pino-pretty
+<br />
 
+# Run Tests
 
-Install Jest  - [Link]
--> npm install -g jest
-for local usage:
--> npm install --save-dev jest
--> yarn add --dev jest
+## Unit testing with Jest - [Link](https://jestjs.io/docs/getting-started)
 
-
-Unit testing with Jest - [Link](https://jestjs.io/docs/getting-started)
-0. Install - [ts-jest](https://www.npmjs.com/package/ts-jest)
-1. Testing see -[Testing TypeScript apps using Jest](https://blog.logrocket.com/testing-typescript-apps-using-jest/)
+1. Testing - [Testing TypeScript apps using Jest](https://blog.logrocket.com/testing-typescript-apps-using-jest/)
 2. Hotfixes - [Fix Problems](https://medium.com/@joenjenga/its-jest-common-problem-faced-using-jest-9905e96db8a)
 
 
-## Commands
-
-Start http server:
-cd %PROJECTPATH%\scraper-backend\__tests__\fixture
-> http-server .
-Now, you can visit http://127.0.0.1:8080 or http://localhost:8080
-
-
-Start scraper-backend Service:
-cd %PROJECTPATH%\scraper-backend
-> npm run dev
-ow, you can visit http://127.0.0.1:5001 or http://localhost:5001
-
-
-Create Test Units:
+### Create Test Units
+```bash
+# Locate Directory of scraper-backend\test-units
 cd %PROJECTPATH%\scraper-backend\__tests__
 
-Run Test Units:
-> jest --testEnvironment=node --runInBand
+# Run Test Units
+jest --testEnvironment=node --runInBand
+```
+
+
+
+<br />
+
+## Start NodeJS http server
+```bash
+# Locate Directory of Web Application
+cd %PROJECTPATH%\scraper-backend\__tests__\fixture
+
+# Run http server
+http-server .
+```
+> Now, you can visit http://127.0.0.1:8080 or http://localhost:8080
+
+
+## Start scraper-backend Service
+```bash
+# Locate Directory of scraper-backend
+cd %PROJECTPATH%\scraper-backend
+
+# Run Service/Project
+npm run dev
+```
+> Now, you can visit http://127.0.0.1:5001 or http://localhost:5001
+
