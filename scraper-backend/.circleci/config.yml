@@ -1,0 +1,126 @@
+version: 2.1
+orbs:
+  gcp-gcr: circleci/gcp-gcr@0.13.0
+  gcp-cli: circleci/gcp-cli@2.1.0
+  pulumi: pulumi/pulumi@2.0.0
+jobs:
+  build:
+    docker:
+      - image: cimg/node:16.14
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install Headless Chrome dependencies
+          command: |
+            sudo apt-get update -yq && sudo apt-get install -yq ca-certificates fonts-liberation libappindicator3-1 libasound2 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils --fix-missing
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Test
+          command: npm run test -- --ci --reporters=default --reporters=jest-junit
+          environment:
+            - JEST_JUNIT_OUTPUT_DIR: ./test-results
+      - store_test_results:
+          path: ./test-results
+      - run:
+          name: Build
+          command: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build
+  build_and_push_docker:
+    machine: true
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - gcp-gcr/build-image:
+          image: $CIRCLE_PROJECT_REPONAME
+          tag: $CIRCLE_SHA1
+      - gcp-gcr/gcr-auth
+      - gcp-gcr/push-image:
+          image: $CIRCLE_PROJECT_REPONAME
+          tag: $CIRCLE_SHA1
+  pulumi_preview:
+    docker:
+      - image: cimg/node:14.19
+    steps:
+      - checkout
+      - pulumi/login
+      - run:
+          name: Install dependencies
+          command: npm i
+          working_directory: infra
+      - run:
+          name: Pulumi preview
+          command: pulumi preview --suppress-outputs --stack dailydotdev/prod -c tag=$CIRCLE_SHA1
+          working_directory: infra
+  pulumi_up:
+    docker:
+      - image: cimg/node:14.19
+    steps:
+      - checkout
+      - gcp-cli/install
+      - gcp-cli/initialize
+      - run:
+          name: Get cluster credentials
+          command: gcloud container clusters get-credentials prod
+      - pulumi/login
+      - run:
+          name: Install dependencies
+          command: npm i
+          working_directory: infra
+      - run:
+          name: Pulumi refresh
+          command: pulumi refresh -y --suppress-outputs --stack dailydotdev/prod
+          working_directory: infra
+      - run:
+          name: Pulumi up
+          command: pulumi up -y --suppress-outputs --stack dailydotdev/prod -c tag=$CIRCLE_SHA1
+          working_directory: infra
+workflows:
+  build:
+    jobs:
+      - build
+      - build_and_push_docker:
+          requires:
+            - build
+          context: GCR
+          filters:
+            branches:
+              ignore: /pull\/[0-9]+/
+      - pulumi_preview:
+          context: PROD
+          filters:
+            branches:
+              ignore:
+              - /pull\/[0-9]+/
+              - master
+      - pulumi_up:
+          requires:
+            - build_and_push_docker
+          context: PROD
+          filters:
+            branches:
+              only:
+                - master
+      - gcp-gcr/add-image-tag:
+          requires:
+            - build_and_push_docker
+          context: GCR
+          image: $CIRCLE_PROJECT_REPONAME
+          source-tag: $CIRCLE_SHA1
+          target-tag: latest
+          filters:
+            branches:
+              only:
+                - master
+
