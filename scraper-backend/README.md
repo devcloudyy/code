@@ -4,14 +4,8 @@
 </div>
 <br>
 <p align="center">
-  <a href="https://circleci.com/gh/dailydotdev/daily-scraper">
-    <img src="https://img.shields.io/circleci/build/github/dailydotdev/daily-scraper/master.svg" alt="Build Status">
-  </a>
-  <a href="https://github.com/dailydotdev/daily-scraper/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/dailydotdev/daily-scraper.svg" alt="License">
-  </a>
-  <a href="https://stackshare.io/daily/daily">
-    <img src="http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat" alt="StackShare">
+  <a href="">
+
   </a>
 </p>
 
@@ -43,38 +37,22 @@ Finally run `npm run dev` to run the service and listen to port `5001`.
 --
 
 
-
-
-<br />
-
 ## System configuration - Installation
 
-<br />
-
 ### `Visual Studio Code` 
-  - add Extension Typescript
+* [Extension Typescript](https://marketplace.visualstudio.com/items?itemName=TypeScriptTeam.typescript-474)
 
-<br />
-
-### `NodeJS` - [Link](https://nodejs.org/) and 
-* add [Package HTTP Server](https://www.npmjs.com/package/http-server)
-
+### `NodeJS` - [Link](https://nodejs.org/) 
+* [Package HTTP Server](https://www.npmjs.com/package/http-server)
 ```bash
 # Check installation
 node --version
 
 # Add HTTP Server package
 npm install --global http-server
-
-# Run HTTP Server
-cd <%PROJECTPATH%>
-http-server .
 ```
 
-<br />
-
 ### `Yarn` - [Link](https://classic.yarnpkg.com/lang/en/docs/install/)
-
 ```bash
 # Global installation
 npm install --global yarn
@@ -83,10 +61,7 @@ npm install --global yarn
 yarn --version
 ```
 
-<br />
-
 ### `Nodemon and ts-node` - [Link](https://blog.logrocket.com/configuring-nodemon-with-typescript/)
-
 ```bash
 # Global installation
 yarn global add nodemon ts-node
@@ -102,10 +77,7 @@ which nodemon
 export PATH="$(yarn global bin):$PATH"
 ```
 
-<br />
-
 ### `pino-pretty` - [Link](https://npm.io/package/pino-pretty)
-
 ```bash
 # Global installation
 npm install -g pino-pretty
@@ -114,8 +86,6 @@ npm install -g pino-pretty
 yarn add --dev pino-pretty
 
 ```
-
-<br />
 
 ### `Jest` - [Link](https://jestjs.io/docs/getting-started)
 * and Package [ts-jest](https://www.npmjs.com/package/ts-jest)
@@ -174,7 +144,7 @@ http-server .
 
 ## Start scraper-backend Service
 ```bash
-# Locate Directory of scraper-backend
+# Locate Directory of scraper-backend Service
 cd %PROJECTPATH%\scraper-backend
 
 # Run Service/Project
