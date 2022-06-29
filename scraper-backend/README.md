@@ -44,27 +44,62 @@ Finally run `npm run dev` to run the service and listen to port `5001`.
 
 ## System configuration
 
-Install Node.js - Standard
-
 Install Visual Studio Code
--> Extension Typescript
-
-Install Yarn: (https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable)
-npm install --global yarn
-
-Config Nodemon: (https://blog.logrocket.com/configuring-nodemon-with-typescript/)
-yarn add --dev nodemon ts-node
-
-Install pino-pretty: (https://npm.io/package/pino-pretty)
-npm install -g pino-pretty
+-> add Extension Typescript
 
 
-Unit testing with Jest: (https://jestjs.io/docs/getting-started)
-yarn add --dev jest
-oder
-npm install --save-dev jest
+Install NodeJS - [Link](https://nodejs.org/)
+-> node --version
 
-See: [Testing TypeScript apps using Jest](https://blog.logrocket.com/testing-typescript-apps-using-jest/)
-[ts-jest](https://www.npmjs.com/package/ts-jest)
-[Fix Problems](https://medium.com/@joenjenga/its-jest-common-problem-faced-using-jest-9905e96db8a)
+Install and run the HTTP Server package - [Link](https://www.npmjs.com/package/http-server)
+-> npm install --global http-server
 
+
+Install Yarn - [Link](https://classic.yarnpkg.com/lang/en/docs/install/)
+-> npm install --global yarn
+-> yarn --version
+
+
+Install Nodemon and ts-node - [Link](https://blog.logrocket.com/configuring-nodemon-with-typescript/)
+-> yarn add --dev nodemon ts-node
+-> yarn global add nodemon --prefix /usr/local
+-> which nodemon
+-> export PATH="$(yarn global bin):$PATH"
+
+
+Install pino-pretty - [Link](https://npm.io/package/pino-pretty)
+-> npm install -g pino-pretty
+
+
+Install Jest  - [Link]
+-> npm install -g jest
+for local usage:
+-> npm install --save-dev jest
+-> yarn add --dev jest
+
+
+Unit testing with Jest - [Link](https://jestjs.io/docs/getting-started)
+0. Install - [ts-jest](https://www.npmjs.com/package/ts-jest)
+1. Testing see -[Testing TypeScript apps using Jest](https://blog.logrocket.com/testing-typescript-apps-using-jest/)
+2. Hotfixes - [Fix Problems](https://medium.com/@joenjenga/its-jest-common-problem-faced-using-jest-9905e96db8a)
+
+
+## Commands
+
+Start http server:
+cd %PROJECTPATH%\scraper-backend\__tests__\fixture
+> http-server .
+Now, you can visit http://127.0.0.1:8080 or http://localhost:8080
+
+
+Start scraper-backend Service:
+cd %PROJECTPATH%\scraper-backend
+> npm run dev
+ow, you can visit http://127.0.0.1:5001 or http://localhost:5001
+
+
+Create Test Units:
+cd %PROJECTPATH%\scraper-backend\__tests__
+
+Run Test Units:
+> jest --testEnvironment=node --runInBand
