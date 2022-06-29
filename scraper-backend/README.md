@@ -42,7 +42,7 @@ Finally run `npm run dev` to run the service and listen to port `5001`.
 ### `Visual Studio Code` 
 * [Extension Typescript](https://marketplace.visualstudio.com/items?itemName=TypeScriptTeam.typescript-474)
 
-### `NodeJS` - [Link](https://nodejs.org/) 
+### `NodeJS` ([Link](https://nodejs.org/)) 
 * [Package HTTP Server](https://www.npmjs.com/package/http-server)
 ```bash
 # Check installation
@@ -52,7 +52,7 @@ node --version
 npm install --global http-server
 ```
 
-### `Yarn` - [Link](https://classic.yarnpkg.com/lang/en/docs/install/)
+### `Yarn` ([Link](https://classic.yarnpkg.com/lang/en/docs/install/))
 ```bash
 # Global installation
 npm install --global yarn
@@ -61,7 +61,7 @@ npm install --global yarn
 yarn --version
 ```
 
-### `Nodemon and ts-node` - [Link](https://blog.logrocket.com/configuring-nodemon-with-typescript/)
+### `Nodemon and ts-node` ([Link](https://blog.logrocket.com/configuring-nodemon-with-typescript/))
 ```bash
 # Global installation
 yarn global add nodemon ts-node
@@ -77,7 +77,7 @@ which nodemon
 export PATH="$(yarn global bin):$PATH"
 ```
 
-### `pino-pretty` - [Link](https://npm.io/package/pino-pretty)
+### `pino-pretty` ([Link](https://npm.io/package/pino-pretty))
 ```bash
 # Global installation
 npm install -g pino-pretty
@@ -87,7 +87,7 @@ yarn add --dev pino-pretty
 
 ```
 
-### `Jest` - [Link](https://jestjs.io/docs/getting-started)
+### `Jest` ([Link](https://jestjs.io/docs/getting-started))
 * and Package [ts-jest](https://www.npmjs.com/package/ts-jest)
 
 ```bash
@@ -105,20 +105,15 @@ npm i ts-jest
 
 <br />
 
-
-
-
 <br />
 
 # Run Tests
 
-## Unit testing with Jest - [Link](https://jestjs.io/docs/getting-started)
-
+## Unit testing with Jest ([Link](https://jestjs.io/docs/getting-started))
 1. Testing - [Testing TypeScript apps using Jest](https://blog.logrocket.com/testing-typescript-apps-using-jest/)
-2. Hotfixes - [Fix Problems](https://medium.com/@joenjenga/its-jest-common-problem-faced-using-jest-9905e96db8a)
+2. Hotfixes - [Common Issues](https://medium.com/@joenjenga/its-jest-common-problem-faced-using-jest-9905e96db8a)
 
-
-### Create Test Units
+## Create Test Units
 ```bash
 # Locate Directory of scraper-backend\test-units
 cd %PROJECTPATH%\scraper-backend\__tests__
@@ -126,8 +121,6 @@ cd %PROJECTPATH%\scraper-backend\__tests__
 # Run Test Units
 jest --testEnvironment=node --runInBand
 ```
-
-
 
 <br />
 
@@ -140,7 +133,6 @@ cd %PROJECTPATH%\scraper-backend\__tests__\fixture
 http-server .
 ```
 > Now, you can visit http://127.0.0.1:8080 or http://localhost:8080
-
 
 ## Start scraper-backend Service
 ```bash
