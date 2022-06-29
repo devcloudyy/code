@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Daily Scraper</h1>
+  <h1>Scraper Backend</h1>
   <strong>Fetches information about every webpage 🤖</strong>
 </div>
 <br>
