@@ -39,7 +39,7 @@ Finally run `npm run dev` to run the service and listen to port `5001`.
 
 ## System configuration - Installation
 
-### `Visual Studio Code` 
+### `Visual Studio Code` ([Link](https://code.visualstudio.com/))
 * [Extension Typescript](https://marketplace.visualstudio.com/items?itemName=TypeScriptTeam.typescript-474)
 
 ### `NodeJS` ([Link](https://nodejs.org/)) 
